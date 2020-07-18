@@ -12,6 +12,8 @@ export default ({ data }) => {
 
   const allFeaturedImages = data.allFile.edges || []
   const allPosts = data.allMarkdownRemark.edges || []
+  console.log("Getting initial state:: ", allPosts) // Got data comes from "page-data.json"
+   // TODO: Get data from a RESTful API Built with Node.js with a Microservices Arquitecture
   const regex = /\/[blog].*\/|$/
   const featuredImageMap = Utils.getImageMap(allFeaturedImages, regex)
 
