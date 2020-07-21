@@ -15,6 +15,7 @@ export default () => {
           className={`brand-icon ${dark ? "empire" : "rebel"}`}
           title="Home"
         />
+        
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse
@@ -22,18 +23,25 @@ export default () => {
         className="justify-content-end"
       >
         <Nav className="pr-3 mr-4 nav-links">
-          <Nav.Link className="ml-2" as={Link} to="/blog" title="Blog">
+        {/* <Nav.Link className="ml-2" as={Link} to="/" title="HOME">
+            Home
+          </Nav.Link> */}
+          {/* <Nav.Link className="ml-2" as={Link} to="/blog" title="Blog">
             Blog
-          </Nav.Link>
-          <Nav.Link className="ml-2" as={Link} to="/about" title="About">
+          </Nav.Link> */}
+          <a  className="ml-2" href="/"   title="Home">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a rel="noopener noreferrer" className="ml-2" href="https://edgargmartinez.com/" target="_blank" title="About">Blog</a>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a  className="ml-2" href="/about"  title="Home">About</a>&nbsp;&nbsp;&nbsp;&nbsp;
+ 
+          {/* <Nav.Link target="_blank" className="ml-2" as={Link} to="/about" title="About">
             About
-          </Nav.Link>
-          <Nav.Link className="ml-2" as={Link} to="/projects" title="Projects">
+          </Nav.Link> */}
+          {/* <Nav.Link className="ml-2" as={Link} to="/projects" title="Projects">
             Projects
-          </Nav.Link>
-          <Nav.Link className="ml-2" as={Link} to="/resume" title="Resume">
+          </Nav.Link> */}
+          {/* <Nav.Link className="ml-2" as={Link} to="/resume" title="Resume">
             Resume
-          </Nav.Link>
+          </Nav.Link> */}
           <Form className="ml-3 my-auto">
             <Form.Check
               type="switch"

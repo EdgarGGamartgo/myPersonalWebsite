@@ -1,8 +1,9 @@
 import React, { useContext } from "react"
 import { PageLayout, PageTitle } from "../components"
 import { Container, Image } from "react-bootstrap"
-import { Link, graphql } from "gatsby"
+import {  graphql } from "gatsby"
 import { ThemeContext } from "../utils" // , SEO
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 export default ({ data }) => {
   const MediaLink = ({ title, author, link }) => (
@@ -13,106 +14,164 @@ export default ({ data }) => {
       &nbsp;-<i>{author}</i>
     </li>
   )
+  console.log(MediaLink)
 
   const {
-    author,
     occupation,
-    readingList,
-    showsList,
-    designations,
     unemployed,
   } = data.site.siteMetadata
-  const { toString } = useContext(ThemeContext)
 
-  const bookLinks = readingList.map(book => MediaLink(book))
-  const showLinks = showsList.map(show => MediaLink(show))
+ // const { firstName, lastName } = data.site.siteMetadata
+  const { dark } = useContext(ThemeContext)
 
   return (
     <PageLayout>
       {/* <SEO title="About Me" /> */}
       <PageTitle title="About Me" />
       <Container>
-        <Image
-          rounded
-          width="140"
-          height="140"
-          src={`../../icons/luke-${toString()}.png`}
-          alt={author}
+      <Image
+          width="150"
+          height="150"
+          fluid
+         // src={dark ? `../../icons/darth-vader.png` : `../../icons/r2-d2.png`}
+          // EdgarMartinezProfilePhoto
+          src={`../../icons/EdgarMartinezProfilePhoto.jpg`}
+         alt={dark ? "Darth Vader" : "R2-D2"}
         />
-        <article className="w-75 m-auto pt-2 text-justify">
-          <p className="text-center">
-            {designations.map((attr, i) => (
-              <span key={attr}>
-                &nbsp;<b>{attr}</b>&nbsp;
-                {i < designations.length - 1 && <>||</>}
-              </span>
-            ))}
+        {unemployed && (
+          <p style={{ textAlign: "justify"}}  className="mt-2">
+            <b> I am a Software Developer with over 2 years of professional
+experience developing commercial web and mobile apps using
+Java, PHP and JavaScript :)</b>
           </p>
-          <p className="i-5 mt-4 pt-2">
-            Hello there! My name is <b>{`${author}`}</b>. I am a&nbsp;
-            <a
-              href="https://www.dictionary.com/e/fictional-characters/padawan/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              padawan
-            </a>
-            &nbsp;
-            <b>{occupation}</b> discovering the ways of the code. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-          </p>
-          <p className="i-5">
-            In my spare time, Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
-          <p className="i-5">
-            Check out my <Link to="/projects">projects</Link> to see what I've
-            been up to! Or check out my <Link to="/blog">blog</Link> to see
-            what's recently caught my eye!
-          </p>
-        </article>
-        <article className="w-75 m-auto">
-          {unemployed && (
-            <>
-              <hr />
-              <p className="unemployed">
-                <small>
-                  I am <b>currently looking for new opportunities</b>! If you
-                  like what you <Link to="/resume">see</Link>, let's get
-                  in&nbsp;
-                  <a
-                    href="mailto:red.five@rebellion.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    touch
-                  </a>
-                  !
-                </small>
-              </p>
-            </>
-          )}
-          <hr />
-          <h5 className="watch-list-title pt-4">
-            Here are a couple of books from my reading list:
-          </h5>
-          <ul style={{ fontSize: "0.9rem", listStyle: "none" }}>{bookLinks}</ul>
-          <h5 className="watch-list-title pt-4">
-            Here are a couple of shows from my watch list:
-          </h5>
-          <ul style={{ fontSize: "0.9rem", listStyle: "none" }}>{showLinks}</ul>
-          <h5 className="watch-list-title pt-4">
-            Here are a couple of movies from my watch list:
-          </h5>
+        )}
+        <Container className="py-0 my-0">
+          <h1
+            style={{
+              fontSize: "5rem",
+              color: "black",
+            }}
+          >
+            <span className="first-name">Edgar</span>&nbsp;
+            <span className="last-name">Martínez</span>
+          </h1>
           <p>
-            <i>...waaaay too many to list.</i>
+            <i>
+              {occupation}
+              {/* {occupation} by day,&nbsp; */}
+              {/* {dark ? `Imperial enforcer by night` : `Rebel scum by night`} */}
+            </i>
           </p>
-        </article>
+        </Container>
+        <hr className="my-3 w-25" />
+        <div className="d-md-inline-flex icons-container">
+          <a
+            href="https://github.com/EdgarGGamartgo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fab", "github"]}
+              className="icons github"
+              title="Github"
+            />
+          </a>
+          <a
+            href="https://linkedin.com/in/edgar-martínez-g"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fab", "linkedin"]}
+              className="icons linkedin"
+              title="LinkedIn"
+            />
+          </a>
+          <a
+            href="https://web.facebook.com/profile.php?id=100025010387662"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fab", "facebook"]}
+              className="icons facebook"
+              title="Facebook"
+            />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCMG4WuLjf5EaCuKB4kWUFng?view_as=subscriber"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fab", "youtube"]}
+              className="icons youtube"
+              title="Youtube"
+            />
+          </a>
+          <a
+            href="https://twitter.com/Edgar72356895"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fab", "twitter"]}
+              className="icons twitter"
+              title="Twitter"
+            />
+          </a>
+          <a
+            href="https://www.instagram.com/edgargamartgoedoga/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fab", "instagram"]}
+              className="icons instagram"
+              title="Instagram"
+            />
+          </a>
+          {/* <a
+            href="https://www.freecodecamp.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >https://www.instagram.com/EdgarGamartgoEdoga/
+            <FontAwesomeIcon
+              icon={["fab", "free-code-camp"]}
+              className="icons fcc"
+              title="FreeCodeCamp"
+            />
+          </a> */}
+          {/* <a
+            href="https://www.hackerrank.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fab", "hackerrank"]}
+              className="icons hr"
+              title="Hackerrank"
+            />
+          </a> */}
+          {/* <a
+            href="mailto:edgarggamartgo@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FontAwesomeIcon
+              icon={["fas", "envelope"]}
+              className="icons mail"
+              title="e-mail"
+            />
+          </a> */}
+           <a href="../../edgarMartinezCV.pdf" target="_blank" download>
+            <FontAwesomeIcon
+              icon={["fas", "file-alt"]}
+              className="icons file"
+              title="Resume"
+            />
+          </a> 
+        </div>
       </Container>
     </PageLayout>
   )
